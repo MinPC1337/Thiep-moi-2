@@ -574,11 +574,12 @@ button {
 /* Couple names */
 .couple-names {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
+    gap: 4px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(184, 134, 11, 0.15);
 }
 
 .couple-name-script {
@@ -1464,7 +1465,7 @@ button {
         align-items: stretch;
     }
 
-    .invitation-events-wrapper > .section {
+    .invitation-events-wrapper>.section {
         flex: 1;
         width: 50%;
     }
