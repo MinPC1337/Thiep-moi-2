@@ -310,42 +310,78 @@ document.addEventListener('keydown', e => {
     }, { passive: true });
 })();
 
-// ===== FLOATING PETALS =====
+// ===== FLOATING PETALS & MAGICAL EFFECTS =====
 function initFloatingPetals() {
-    // Create petals periodically
+    // Create petals very frequently for a dense flower-falling effect
     setInterval(() => {
         if (document.getElementById('welcome-overlay')?.style.display === 'none') {
-            createPetal();
+            // Spawn 1 to 3 petals at once to make it thicker
+            const count = Math.floor(Math.random() * 3) + 1;
+            for(let i = 0; i < count; i++) {
+                createPetal();
+            }
         }
-    }, 3000);
+    }, 300);
+
+    // Create magical glowing orbs periodically
+    setInterval(() => {
+        if (document.getElementById('welcome-overlay')?.style.display === 'none') {
+            createGlowingOrb();
+        }
+    }, 1500);
 }
 
 function createPetal() {
     const petal = document.createElement('div');
     petal.className = 'petal';
 
-    // Random position
+    // Random position across the screen
     petal.style.left = Math.random() * 100 + 'vw';
     petal.style.top = '-20px';
 
-    // Random size
-    const size = 8 + Math.random() * 12;
+    // Random size (some big, some small for depth)
+    const size = 6 + Math.random() * 14;
     petal.style.width = size + 'px';
     petal.style.height = size + 'px';
 
-    // Random duration
-    const duration = 6 + Math.random() * 8;
+    // Varied animation duration for realistic falling
+    const duration = 4 + Math.random() * 6;
     petal.style.animationDuration = duration + 's';
 
     // Random horizontal drift
-    const drift = -30 + Math.random() * 60;
+    const drift = -50 + Math.random() * 100;
     petal.style.setProperty('--drift', drift + 'px');
+
+    // Slight random delay so they don't fall exactly together
+    petal.style.animationDelay = (Math.random() * 2) + 's';
 
     document.body.appendChild(petal);
 
     // Cleanup
     setTimeout(() => {
         petal.remove();
+    }, (duration + 2) * 1000);
+}
+
+function createGlowingOrb() {
+    const orb = document.createElement('div');
+    orb.className = 'glowing-orb';
+
+    // Start from bottom or sides
+    orb.style.left = Math.random() * 100 + 'vw';
+    orb.style.bottom = '-50px';
+
+    const size = 4 + Math.random() * 8;
+    orb.style.width = size + 'px';
+    orb.style.height = size + 'px';
+
+    const duration = 8 + Math.random() * 10;
+    orb.style.animationDuration = duration + 's';
+
+    document.body.appendChild(orb);
+
+    setTimeout(() => {
+        orb.remove();
     }, duration * 1000);
 }
 
