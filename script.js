@@ -11,8 +11,8 @@ const CONFIG = {
         'image/optimized/2S8A0167.jpg',
         'image/optimized/2S8A0362.jpg',
         'image/optimized/2S8A0365.jpg',
-        'image/optimized/2S8A0377.jpg',
-        'image/optimized/2S8A0382.jpg',
+        // 'image/optimized/2S8A0377.jpg',
+        // 'image/optimized/2S8A0382.jpg',
         'image/optimized/2S8A0405.jpg',
         'image/optimized/2S8A0598.jpg',
         'image/optimized/2S8A0602.jpg',
@@ -317,7 +317,7 @@ function initFloatingPetals() {
         if (document.getElementById('welcome-overlay')?.style.display === 'none') {
             // Spawn 1 to 3 petals at once to make it thicker
             const count = Math.floor(Math.random() * 3) + 1;
-            for(let i = 0; i < count; i++) {
+            for (let i = 0; i < count; i++) {
                 createPetal();
             }
         }
